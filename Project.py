@@ -32,17 +32,17 @@ def getAlphaVantage():
 # Outputs data of interest.
 def printAlphaVantage():
     get = getAlphaVantage()
-    quantitiy = input("How much do you want to convert: ")
     from_code = get['Realtime Currency Exchange Rate']['1. From_Currency Code']
     from_name = get['Realtime Currency Exchange Rate']['2. From_Currency Name']
     to_code = get['Realtime Currency Exchange Rate']['3. To_Currency Code']
     to_name = get['Realtime Currency Exchange Rate']['4. To_Currency Name']
-    rate = float(get['Realtime Currency Exchange Rate']['5. Exchange Rate']) * quantitiy
+    quantity = input("How much of %s (%s) do you want to convert to %s (%s): " % (from_name, from_code, to_name, to_code))
+    rate = float(get['Realtime Currency Exchange Rate']['5. Exchange Rate']) * float(quantity)
     refresh = get['Realtime Currency Exchange Rate']['6. Last Refreshed']
     time_zone = get['Realtime Currency Exchange Rate']['7. Time Zone']
 
-    print("The current exchange rate for 1 %s (%s) to %s (%s) is %s. This information was last updated on %s %s.\n" % (
-        from_name, from_code, to_name, to_code, rate, refresh, time_zone))
+    print("The current exchange rate for %s %s (%s) is %s %s (%s). This information was last updated on %s %s.\n" % (
+        quantity, from_name, from_code, rate, to_name, to_code, refresh, time_zone))
 
 
 # Handles HTTP errors.
