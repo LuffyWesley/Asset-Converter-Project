@@ -36,7 +36,8 @@ def printAlphaVantage():
     from_name = get['Realtime Currency Exchange Rate']['2. From_Currency Name']
     to_code = get['Realtime Currency Exchange Rate']['3. To_Currency Code']
     to_name = get['Realtime Currency Exchange Rate']['4. To_Currency Name']
-    quantity = input("How much of %s (%s) would you like to convert to %s (%s): " % (from_name, from_code, to_name, to_code))
+    quantity = input("How much of %s (%s) would you like to convert to %s (%s): " % (from_name, from_code, to_name,
+                                                                                     to_code))
     rate = float(get['Realtime Currency Exchange Rate']['5. Exchange Rate'])*float(quantity)
     refresh = get['Realtime Currency Exchange Rate']['6. Last Refreshed']
     time_zone = get['Realtime Currency Exchange Rate']['7. Time Zone']
