@@ -3,6 +3,9 @@ import urllib.request
 import urllib.error
 import json
 
+import os
+from webapp2_extras import jinja2
+
 '''
 Below is a sample of currency code's you can use for this program.
 
@@ -70,3 +73,7 @@ while True:
         getAlphaVantageSafe()
     else:
         break
+
+JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
+                                       extensions=['jinja2.ext.autoescape'],
+                                       autoescape=True)
