@@ -15,6 +15,8 @@ Ethereum = ETH
 Litecoin = LTC
 '''
 
+# Enter your own API Key from http://www.alphavantage.co/support/#api-key
+ALPHAVANTAGE_KEY = 'JY174YSHZ5DCU0FS'
 
 # Calls the API and accepts user input for currencies to convert.
 def getAlphaVantage():
@@ -22,8 +24,7 @@ def getAlphaVantage():
     method = 'function=CURRENCY_EXCHANGE_RATE'
     from_currency = 'from_currency=' + (input("\nEnter the currency you are transferring from: ").upper())
     to_currency = 'to_currency=' + (input("Enter the currency you are transferring to: ").upper())
-    # Enter your own API Key from http://www.alphavantage.co/support/#api-key
-    api_key = 'apikey= '
+    api_key = 'apikey=' + ALPHAVANTAGE_KEY
     request = baseurl + method + "&" + from_currency + "&" + to_currency + "&" + api_key
     json_string = urllib.request.urlopen(request).read()
     data = json.loads(json_string)
