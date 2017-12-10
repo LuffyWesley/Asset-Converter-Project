@@ -17,28 +17,27 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         logging.info("In MainHandler")
 
-        template_values = {}
-        template_values['page_title'] = "Asset Converter"
+        template_values = {'page_title': "Asset Converter"}
         template = JINJA_ENVIRONMENT.get_template('website.html')
         self.response.write(template.render(template_values))
 
 
 # Calls the API and accepts user input for currencies to convert.
-def getAlphaVantage(from_input, to_input, quantity_input):
+def getAlphaVantage(from_input, to_input):
     baseurl = 'https://www.alphavantage.co/query?'
     method = 'function=CURRENCY_EXCHANGE_RATE'
     from_currency = 'from_currency=' + from_input.upper()
     to_currency = 'to_currency=' + to_input.upper()
     api_key = 'apikey=' + ALPHAVANTAGE_KEY
-    request = baseurl + method + "&" + from_currency + "&" + to_currency + "&" + api_key
-    json_string = urllib.request.urlopen(request).read()
+    requested = baseurl + method + "&" + from_currency + "&" + to_currency + "&" + api_key
+    json_string = urllib.request.urlopen(requested).read()
     data = json.loads(json_string)
     return data
 
 
 # Outputs data of interest.
 def printAlphaVantage(from_input, to_input, quantity_input):
-    get = getAlphaVantage(from_input, to_input, quantity_input)
+    get = getAlphaVantage(from_input, to_input)
     from_code = get['Realtime Currency Exchange Rate']['1. From_Currency Code']
     from_name = get['Realtime Currency Exchange Rate']['2. From_Currency Name']
     to_code = get['Realtime Currency Exchange Rate']['3. To_Currency Code']
@@ -79,7 +78,7 @@ class GreetResponseHandlr(webapp2.RequestHandler):
             self.response.write(template.render(vals))
 
 
-application = webapp2.WSGIApplication([ \
+application = webapp2.WSGIApplication([
     ('/gresponse', GreetResponseHandlr),
     ('/.*', MainHandler)
 ],
