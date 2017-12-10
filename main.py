@@ -1,5 +1,5 @@
 import webapp2
-import urllib
+import urllib2
 import json
 import jinja2
 
@@ -7,7 +7,7 @@ import os
 import logging
 
 # Enter your own API Key from http://www.alphavantage.co/support/#api-key
-ALPHAVANTAGE_KEY = 'JY174YSHZ5DCU0FS'
+ALPHAVANTAGE_KEY = ''
 
 JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
                                        extensions=['jinja2.ext.autoescape'], autoescape=True)
@@ -22,6 +22,19 @@ class MainHandler(webapp2.RequestHandler):
         self.response.write(template.render(template_values))
 
 
+def safeGet(requested):
+    try:
+        logging.info(requested)
+        return urllib2.urlopen(requested)
+    except urllib2.HTTPError as e:
+        logging.info('The server couln\'t fulfill the request.')
+        logging.info('Error code: ' + e.code)
+    except urllib2.URLError as e:
+        logging.info('We failed to reach a server')
+        logging.info('Reason: ', e.reason)
+    return None
+
+
 # Calls the API and accepts user input for currencies to convert.
 def getAlphaVantage(from_input, to_input):
     baseurl = 'https://www.alphavantage.co/query?'
@@ -30,24 +43,25 @@ def getAlphaVantage(from_input, to_input):
     to_currency = 'to_currency=' + to_input.upper()
     api_key = 'apikey=' + ALPHAVANTAGE_KEY
     requested = baseurl + method + "&" + from_currency + "&" + to_currency + "&" + api_key
-    json_string = urllib.request.urlopen(requested).read()
-    data = json.loads(json_string)
-    return data
+    return safeGet(requested)
 
 
 # Outputs data of interest.
 def printAlphaVantage(from_input, to_input, quantity_input):
     get = getAlphaVantage(from_input, to_input)
-    from_code = get['Realtime Currency Exchange Rate']['1. From_Currency Code']
-    from_name = get['Realtime Currency Exchange Rate']['2. From_Currency Name']
-    to_code = get['Realtime Currency Exchange Rate']['3. To_Currency Code']
-    to_name = get['Realtime Currency Exchange Rate']['4. To_Currency Name']
+    json_string = get.read()
+    data = json.loads(json_string)
+    from_code = data['Realtime Currency Exchange Rate']['1. From_Currency Code']
+    from_name = data['Realtime Currency Exchange Rate']['2. From_Currency Name']
+    to_code = data['Realtime Currency Exchange Rate']['3. To_Currency Code']
+    to_name = data['Realtime Currency Exchange Rate']['4. To_Currency Name']
     quantity = quantity_input
-    rate = float(get['Realtime Currency Exchange Rate']['5. Exchange Rate']) * float(quantity)
-    refresh = get['Realtime Currency Exchange Rate']['6. Last Refreshed']
-    time_zone = get['Realtime Currency Exchange Rate']['7. Time Zone']
+    rate = float(data['Realtime Currency Exchange Rate']['5. Exchange Rate']) * float(quantity)
+    refresh = data['Realtime Currency Exchange Rate']['6. Last Refreshed']
+    time_zone = data['Realtime Currency Exchange Rate']['7. Time Zone']
 
-    outcome = ("The current exchange rate for %s %s (%s) is %s %s (%s). This information was last updated on %s %s.\n" % (
+    outcome = (
+            "The current exchange rate for %s %s (%s) is %s %s (%s). This information was last updated on %s %s.\n" % (
         quantity, from_name, from_code, rate, to_name, to_code, refresh, time_zone))
     return outcome
 
@@ -79,8 +93,8 @@ class GreetResponseHandlr(webapp2.RequestHandler):
             self.response.write(template.render(vals))
 
 
-application = webapp2.WSGIApplication([\
-    ('/gresponse', GreetResponseHandlr),
+application = webapp2.WSGIApplication([ \
+    ('/results', GreetResponseHandlr),
     ('/.*', MainHandler)
 ],
     debug=True)
