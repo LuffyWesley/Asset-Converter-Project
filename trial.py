@@ -16,7 +16,7 @@ Litecoin = LTC
 '''
 
 # Enter your own API Key from http://www.alphavantage.co/support/#api-key
-ALPHAVANTAGE_KEY = 'JY174YSHZ5DCU0FS'
+ALPHAVANTAGE_KEY = ' '
 
 # Calls the API and accepts user input for currencies to convert.
 def getAlphaVantage():
