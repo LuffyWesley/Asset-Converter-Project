@@ -47,8 +47,9 @@ def printAlphaVantage(from_input, to_input, quantity_input):
     refresh = get['Realtime Currency Exchange Rate']['6. Last Refreshed']
     time_zone = get['Realtime Currency Exchange Rate']['7. Time Zone']
 
-    return ("The current exchange rate for %s %s (%s) is %s %s (%s). This information was last updated on %s %s.\n" % (
+    outcome = ("The current exchange rate for %s %s (%s) is %s %s (%s). This information was last updated on %s %s.\n" % (
         quantity, from_name, from_code, rate, to_name, to_code, refresh, time_zone))
+    return outcome
 
 
 class GreetResponseHandlr(webapp2.RequestHandler):
@@ -71,14 +72,14 @@ class GreetResponseHandlr(webapp2.RequestHandler):
 
             vals['results'] = results
 
-            template = JINJA_ENVIRONMENT.get_template('response.html')
+            template = JINJA_ENVIRONMENT.get_template('results.html')
             self.response.write(template.render(vals))
         else:
             template = JINJA_ENVIRONMENT.get_template('website.html')
             self.response.write(template.render(vals))
 
 
-application = webapp2.WSGIApplication([
+application = webapp2.WSGIApplication([\
     ('/gresponse', GreetResponseHandlr),
     ('/.*', MainHandler)
 ],
