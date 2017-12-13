@@ -3,6 +3,9 @@ import plotly.graph_objs as go
 import urllib
 import json
 
+# Enter your own API Key from http://www.alphavantage.co/support/#api-key
+ALPHAVANTAGE_KEY = ''
+
 
 def safeGet(url):
     try:
@@ -22,7 +25,7 @@ def getAlphaVantage2():
     outputSize = "outputsize=compact"
     x = input("Enter the stock you are looking to purchase").upper()
     symbol = 'symbol=' + x
-    api_key = 'apikey=JY174YSHZ5DCU0FS'
+    api_key = 'apikey=' + ALPHAVANTAGE_KEY
     request = baseurl + method + "&" + outputSize + "&" + symbol + "&" + api_key
     temp = safeGet(request).read()
     finalData = json.loads(temp)
