@@ -15,6 +15,7 @@ Things needed to run this program:
 2. Google App Engine.
 
     a. Download and install Python 2 from https://www.python.org/downloads/release/python-2714/.
+    
     b. Download and install the App Engine SDK from https://cloud.google.com/appengine/docs/python/download. 
     
     To test the program locally on your terminal/command prompt, navigate to the folder in which the code is and type "dev_appserver.py .". Don't miss the period and a space between the .py file and the period -- this tells it to look for your program's code in the current directory!
