@@ -2,7 +2,7 @@ import webapp2
 import urllib2
 import json
 import jinja2
-import plotly.offline as py
+import plotly.plotly as py
 import plotly.graph_objs as go
 import os
 import logging
@@ -138,9 +138,9 @@ def plotlyGraph(to_crypto_form):
         xaxis=dict(title='Dates'),
         yaxis=dict(title='Stock Price'),
     )
-    py.init_notebook_mode(connected=True)
+    # py.init_notebook_mode(connected=True)
     fig = dict(data=data, layout=layout)
-    new = py.plot(fig, filename="temp-plot.html")
+    new = py.plot(fig)
     return new
 
 
