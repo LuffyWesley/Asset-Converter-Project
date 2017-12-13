@@ -16,7 +16,7 @@ Litecoin = LTC
 '''
 
 # Enter your own API Key from http://www.alphavantage.co/support/#api-key
-ALPHAVANTAGE_KEY = ''
+ALPHAVANTAGE_KEY = 'JY174YSHZ5DCU0FS'
 
 # Calls the API and accepts user input for currencies to convert.
 def getAlphaVantage():
@@ -40,7 +40,7 @@ def printAlphaVantage():
     to_name = get['Realtime Currency Exchange Rate']['4. To_Currency Name']
     quantity = input("How much of %s (%s) would you like to convert to %s (%s): " % (from_name, from_code, to_name,
                                                                                      to_code))
-    rate = float(get['Realtime Currency Exchange Rate']['5. Exchange Rate'])*float(quantity)
+    rate = float(get['Realtime Currency Exchange Rate']['5. Exchange Rate']) * float(quantity)
     refresh = get['Realtime Currency Exchange Rate']['6. Last Refreshed']
     time_zone = get['Realtime Currency Exchange Rate']['7. Time Zone']
 

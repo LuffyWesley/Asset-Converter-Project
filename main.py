@@ -7,7 +7,7 @@ import os
 import logging
 
 # Enter your own API Key from http://www.alphavantage.co/support/#api-key
-ALPHAVANTAGE_KEY = ''
+ALPHAVANTAGE_KEY = 'JY174YSHZ5DCU0FS'
 
 JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
                                        extensions=['jinja2.ext.autoescape'], autoescape=True)
