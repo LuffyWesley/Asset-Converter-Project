@@ -2,8 +2,12 @@ import webapp2
 import urllib2
 import json
 import jinja2
+
+""""
 import plotly.ofline as py
 import plotly.graph_objs as go
+"""""
+
 import os
 import logging
 
@@ -67,6 +71,7 @@ def printAlphaVantage(from_input, to_input, quantity_input):
     return outcome
 
 
+""""
 def getAlphaVantage2(to_crypto_form):
     baseurl = 'https://www.alphavantage.co/query?'
     method = 'function=DIGITAL_CURRENCY_INTRADAY'
@@ -142,6 +147,7 @@ def plotlyGraph(to_input):
     fig = dict(data=data, layout=layout)
     new = py.plot(fig)
     return new
+"""""
 
 
 class GreetResponseHandlr(webapp2.RequestHandler):
@@ -150,7 +156,7 @@ class GreetResponseHandlr(webapp2.RequestHandler):
         from_input = self.request.get('from_input')
         to_input = self.request.get('to_input')
         quantity_input = self.request.get('quantity_input')
-        to_crypto_form = self.request.get('to_crypto_form')
+        # to_crypto_form = self.request.get('to_crypto_form')
         vals['page_title'] = "Currency Converter"
 
         if from_input and to_input and quantity_input:
@@ -160,11 +166,12 @@ class GreetResponseHandlr(webapp2.RequestHandler):
             vals['from_input'] = from_input
             vals['to_input'] = to_input
             vals['quantity_input'] = quantity_input
+            """""
             if to_crypto_form:
                 vals['to_input'] = to_input
                 graph = plotlyGraph(to_input)
                 vals['graph'] = graph
-
+            """""
             results = printAlphaVantage(from_input, to_input, quantity_input)
 
             vals['results'] = results
