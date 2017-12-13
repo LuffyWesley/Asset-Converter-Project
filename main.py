@@ -2,7 +2,7 @@ import webapp2
 import urllib2
 import json
 import jinja2
-import plotly.plotly as py
+import plotly.ofline as py
 import plotly.graph_objs as go
 import os
 import logging
@@ -79,8 +79,8 @@ def getAlphaVantage2(to_crypto_form):
     return finalData
 
 
-def plotlyGraph(to_crypto_form):
-    data = getAlphaVantage2(to_crypto_form)
+def plotlyGraph(to_input):
+    data = getAlphaVantage2(to_input)
     for x in data:
         for y in data[x]:
             if y == '1. Information':
@@ -136,7 +136,7 @@ def plotlyGraph(to_crypto_form):
     layout = dict(
         title=info + " for " + code,
         xaxis=dict(title='Dates'),
-        yaxis=dict(title='Stock Price'),
+        yaxis=dict(title='Currency Price'),
     )
     # py.init_notebook_mode(connected=True)
     fig = dict(data=data, layout=layout)
@@ -161,13 +161,13 @@ class GreetResponseHandlr(webapp2.RequestHandler):
             vals['to_input'] = to_input
             vals['quantity_input'] = quantity_input
             if to_crypto_form:
-                vals['to_crypto_form'] = to_crypto_form
-                graph = plotlyGraph(to_crypto_form)
+                vals['to_input'] = to_input
+                graph = plotlyGraph(to_input)
+                vals['graph'] = graph
 
             results = printAlphaVantage(from_input, to_input, quantity_input)
 
             vals['results'] = results
-            vals['graph'] = graph
 
             template = JINJA_ENVIRONMENT.get_template('results.html')
             self.response.write(template.render(vals))
