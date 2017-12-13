@@ -1,5 +1,5 @@
-# Asset Converter
-This program is an asset converter which will allow you to see what your current's assets value would be in another asset form such as physical currency, digital currency or stocks. 
+# Currency Converter
+This program is an asset converter which will allow you to see what your current's assets value would be in another asset form such as physical currency or digital currency. 
 
 Alpha Vantage delivers a free API for real time financial data and most used finance indicators in a simple JSON or pandas format. It requires a free API, that can be requested on http://www.alphavantage.co/support/#api-key. You can have a look at all the API calls available in their documentation http://www.alphavantage.co/documentation. 
 

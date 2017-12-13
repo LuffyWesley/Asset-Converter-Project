@@ -88,9 +88,9 @@ def plotlyGraph():
         xaxis=dict(title='Dates'),
         yaxis=dict(title='Stock Price'),
     )
-    # py.init_notebook_mode(connected=True)
+    py.init_notebook_mode(connected=True)
     fig = dict(data=data, layout=layout)
-    py.plot(fig, filename='finalGraph.html')
+    py.plot(fig)
 
 
 plotlyGraph()

@@ -19,7 +19,7 @@
                             <section class="post">
                                 <header class="major">
                                     <h1>{{page_title}}</h1>
-                                    <p>This program is an asset converter which will allow you to see what your current's assets value would be in another asset form such as physical currency, digital currency or stocks.</p>
+                                    <p>This program is an currency converter which will allow you to see what your current's assets value would be in another asset form such as physical or digital currency.</p>
                                     <ul class="actions">
                                         <li><a target="_blank" href="https://github.com/LuffyWesley/Asset-Converter" class="button">Learn More</a></li>
                                     </ul>
@@ -34,7 +34,7 @@
                         <!-- Text -->
                             <section class="post">
                                 <h2>What you can do with this program:</h2>
-                                <p>At the moment, you can use the converter to switch between 2 sets of currencies (crypto or physical).</p>
+                                <p>You can use the converter to switch between 2 sets of currencies (crypto or physical). If you do choose a crypto currency, we will also display a graph showing its price history. </p>
                                 <p>Below are some example currencies you can use for this program:</p>
                                 <ul>
                                     <li>United Arab Emirates = AED</li>
@@ -55,11 +55,22 @@
                             <section class="post">
                                 <h2>Begin your conversion!</h2>
                                 <form action="results" method="post">
-                                    <label for="from_input">Please enter the currency you want to switch from:</label>
+                                    <label for="from_input">Please enter the currency you want to switch from (eg USD):</label>
                                     <input type="text" id="from_input" name="from_input"/>
-                                    <label for="to_input">Please enter the currency you want to switch to:</label>
+                                    <select>
+                                        <option value="" disabled="disabled" selected="selected">What currency form is this?
+                                        </option>
+                                        <option value="from_crypto_form">Crypto</option>
+                                        <option value="from_physical_form">Physical</option>
+                                    </select>
+                                    <label for="to_input">Please enter the currency you want to switch to (eg BTC):</label>
                                     <input type="text" id="to_input" name="to_input"/>
-
+                                    <select>
+                                        <option value="" disabled="disabled" selected="selected">What currency form is this?
+                                        </option>
+                                        <option value="to_crypto_form">Crypto</option>
+                                        <option value="to_physical_form">Physical</option>
+                                    </select>
                                     <label for="quantity_input">Please enter the quantity:</label>
                                     <input type="text" id="quantity_input" name="quantity_input"/>
                                     <input type="submit" value="Go" name="gobtn"/>
