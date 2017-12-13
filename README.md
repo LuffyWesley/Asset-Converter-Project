@@ -9,3 +9,12 @@ To get data in python, simply call the object with your API key and get ready fo
 3.	Digital/crypto currencies. Provides real-time and historical equity data
 4.	Stock technical indicators.
 5.	Sector performances. Provides real-time and historical sector performances calculated from S&P500 incumbents. 
+
+Things needed to run this program:
+1. Plotly. Just type "pip install plotly" on command prompt/powershell for PC and terminal on MAC and run it. 
+2. Google App Engine.
+
+    a. Download and install Python 2 from https://www.python.org/downloads/release/python-2714/.
+    b. Download and install the App Engine SDK from https://cloud.google.com/appengine/docs/python/download. 
+    
+    To test the program locally on your terminal/command prompt, navigate to the folder in which the code is and type "dev_appserver.py .". Don't miss the period and a space between the .py file and the period -- this tells it to look for your program's code in the current directory!
