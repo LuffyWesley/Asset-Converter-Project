@@ -145,8 +145,7 @@ def plotlyGraph(to_input):
     )
     # py.init_notebook_mode(connected=True)
     fig = dict(data=data, layout=layout)
-    new = py.plot(fig)
-    return new
+    return py.plot(fig)
 """""
 
 
