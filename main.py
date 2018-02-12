@@ -22,7 +22,7 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         logging.info("In MainHandler")
 
-        template_values = {'page_title': "Currency Converter"}
+        template_values = {'page_title': "Asset Converter"}
         template = JINJA_ENVIRONMENT.get_template('website.html')
         self.response.write(template.render(template_values))
 
@@ -156,7 +156,7 @@ class GreetResponseHandlr(webapp2.RequestHandler):
         to_input = self.request.get('to_input')
         quantity_input = self.request.get('quantity_input')
         # to_crypto_form = self.request.get('to_crypto_form')
-        vals['page_title'] = "Currency Converter"
+        vals['page_title'] = "Asset Converter"
 
         if from_input and to_input and quantity_input:
             from_input = self.request.get('from_input')
