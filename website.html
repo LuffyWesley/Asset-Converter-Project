@@ -1,91 +1,86 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <title>{{page_title}}</title>
-        <meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-loading">
-
-        <!-- Wrapper -->
-            <div id="wrapper">
-
-                <!-- Main -->
-                    <div id="main">
-
-                        <!-- Intro -->
-                            <section class="post">
-                                <header class="major">
-                                    <h1>{{page_title}}</h1>
-                                    <p>This program converts digital currencies to physical currencies and vice versa in real-time.</p>
-                                    <ul class="actions">
-                                        <li><a target="_blank" href="https://github.com/LuffyWesley/Asset-Converter" class="button">Learn More</a></li>
-                                    </ul>
-                                    <h3>Project done by:</h3>
-                                    <ul class="actions">
-                                        <li><a target="_blank" href="https://wesmuthemba.com" class="button">Wesley A. Muthemba</a></li>
-                                        <li><a target="_blank" href="https://github.com/jeetnarang" class="button">Japjeet Singh Narang</a></li>
-                                    </ul>
-                                </header>
-                            </section>
-
-                        <!-- Text -->
-                            <section class="post">
-                                <h2>What you can do with this program:</h2>
-                                <p>You can use the converter to switch between 2 sets of currencies (crypto or physical). If you do choose a crypto currency, we will also display a graph showing its price history. </p>
-                                <p>Below are some example currencies you can use for this program:</p>
-                                <ul>
-                                    <li>United Arab Emirates = AED</li>
-                                    <li>United States = USD</li>
-                                    <li>Taiwan = TWD</li>
-                                    <li>Kenya = KES</li>
-                                    <li>Bitcoin = BTC</li>
-                                    <li>Ethereum = ETH</li>
-                                    <li>Litecoin = LTC</li>
-                                </ul>
-                                <ul class="actions">
-                                    <li><a target="_blank" href="https://coinmarketcap.com/all/views/all/" class="button">More Cryptocurrencies</a></li>
-                                    <li><a target="_blank" href="https://www.countries-ofthe-world.com/world-currencies.html" class="button">More Physical Currencies</a></li>
-                                </ul>
-                            </section>
-
-                        <!-- Input -->
-                            <section class="post">
-                                <h2>Begin your conversion!</h2>
-                                <form action="results" method="post">
-                                    <label for="from_input">Please enter the currency you want to switch from (eg USD):</label>
-                                    <input type="text" id="from_input" name="from_input"/>
-                                    <!--select>
-                                        <option value="" disabled="disabled" selected="selected">What currency form is this?
-                                        </option>
-                                        <option value="from_crypto_form">Crypto</option>
-                                        <option value="from_physical_form">Physical</option>
-                                    </select-->
-                                    <label for="to_input">Please enter the currency you want to switch to (eg BTC):</label>
-                                    <input type="text" id="to_input" name="to_input"/>
-                                    <!--select>
-                                        <option value="" disabled="disabled" selected="selected">What currency form is this?
-                                        </option>
-                                        <option value="to_crypto_form">Crypto</option>
-                                        <option value="to_physical_form">Physical</option>
-                                    </select-->
-                                    <label for="quantity_input">Please enter the quantity:</label>
-                                    <input type="text" id="quantity_input" name="quantity_input"/>
-                                    <input type="submit" value="Go" name="gobtn"/>
-                                </form>
-                            </section>
-                    </div>
-            </div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
+   <head>
+      <title>{{page_title}}</title>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+      <link rel="stylesheet" href="assets/css/main.css" />
+      <noscript>
+         <link rel="stylesheet" href="assets/css/noscript.css" />
+      </noscript>
+   </head>
+   <body class="is-loading">
+      <!-- Wrapper -->
+      <div id="wrapper">
+         <!-- Main -->
+         <div id="main">
+            <!-- Intro -->
+            <section class="post">
+               <header class="major">
+                  <h1>{{page_title}}</h1>
+                  <p>This program converts digital currencies to physical currencies and vice versa in real-time.</p>
+                  <ul class="actions">
+                     <li><a target="_blank" href="https://github.com/LuffyWesley/Asset-Converter" class="button">Learn More</a></li>
+                  </ul>
+                  <h3>Project done by:</h3>
+                  <ul class="actions">
+                     <li><a target="_blank" href="https://wesmuthemba.com" class="button">Wesley A. Muthemba</a></li>
+                     <li><a target="_blank" href="https://github.com/jeetnarang" class="button">Japjeet Singh Narang</a></li>
+                  </ul>
+               </header>
+            </section>
+            <!-- Text -->
+            <section class="post">
+               <h2>What you can do with this program:</h2>
+               <p>You can use the converter to switch between 2 sets of currencies (crypto or physical). If you do choose a crypto currency, we will also display a graph showing its price history. </p>
+               <p>Below are some example currencies you can use for this program:</p>
+               <ul>
+                  <li>United Arab Emirates = AED</li>
+                  <li>United States = USD</li>
+                  <li>Taiwan = TWD</li>
+                  <li>Kenya = KES</li>
+                  <li>Bitcoin = BTC</li>
+                  <li>Ethereum = ETH</li>
+                  <li>Litecoin = LTC</li>
+               </ul>
+               <ul class="actions">
+                  <li><a target="_blank" href="https://coinmarketcap.com/all/views/all/" class="button">More Cryptocurrencies</a></li>
+                  <li><a target="_blank" href="https://www.countries-ofthe-world.com/world-currencies.html" class="button">More Physical Currencies</a></li>
+               </ul>
+            </section>
+            <!-- Input -->
+            <section class="post">
+               <h2>Begin your conversion!</h2>
+               <form action="results" method="post">
+                  <label for="from_input">Please enter the currency you want to switch from (eg USD):</label>
+                  <input type="text" id="from_input" name="from_input"/>
+                  <!--select>
+                     <option value="" disabled="disabled" selected="selected">What currency form is this?
+                     </option>
+                     <option value="from_crypto_form">Crypto</option>
+                     <option value="from_physical_form">Physical</option>
+                     </select-->
+                  <label for="to_input">Please enter the currency you want to switch to (eg BTC):</label>
+                  <input type="text" id="to_input" name="to_input"/>
+                  <!--select>
+                     <option value="" disabled="disabled" selected="selected">What currency form is this?
+                     </option>
+                     <option value="to_crypto_form">Crypto</option>
+                     <option value="to_physical_form">Physical</option>
+                     </select-->
+                  <label for="quantity_input">Please enter the quantity:</label>
+                  <input type="text" id="quantity_input" name="quantity_input"/>
+                  <input type="submit" value="Go" name="gobtn"/>
+               </form>
+            </section>
+         </div>
+      </div>
+      <!-- Scripts -->
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/jquery.scrollex.min.js"></script>
+      <script src="assets/js/jquery.scrolly.min.js"></script>
+      <script src="assets/js/skel.min.js"></script>
+      <script src="assets/js/util.js"></script>
+      <script src="assets/js/main.js"></script>
+   </body>
 </html>
