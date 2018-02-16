@@ -14,8 +14,7 @@ import logging
 # Enter your own API Key from http://www.alphavantage.co/support/#api-key
 ALPHAVANTAGE_KEY = ''
 
-JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
-                                       extensions=['jinja2.ext.autoescape'], autoescape=True)
+JINJA_ENVIRONMENT = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)), extensions=['jinja2.ext.autoescape'], autoescape=True)
 
 
 class MainHandler(webapp2.RequestHandler):
@@ -65,9 +64,7 @@ def printAlphaVantage(from_input, to_input, quantity_input):
     refresh = data['Realtime Currency Exchange Rate']['6. Last Refreshed']
     time_zone = data['Realtime Currency Exchange Rate']['7. Time Zone']
 
-    outcome = (
-            "The current exchange rate for %s %s (%s) is %s %s (%s). This information was last updated on %s %s.\n" % (
-        quantity, from_name, from_code, rate, to_name, to_code, refresh, time_zone))
+    outcome = ("The current exchange rate for %s %s (%s) is %s %s (%s). This information was last updated on %s %s.\n" % (quantity, from_name, from_code, rate, to_name, to_code, refresh, time_zone))
     return outcome
 
 
@@ -182,8 +179,4 @@ class GreetResponseHandlr(webapp2.RequestHandler):
             self.response.write(template.render(vals))
 
 
-application = webapp2.WSGIApplication([ \
-    ('/results', GreetResponseHandlr),
-    ('/.*', MainHandler)
-],
-    debug=True)
+application = webapp2.WSGIApplication([ ('/results', GreetResponseHandlr), ('/.*', MainHandler)], debug=True)
