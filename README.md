@@ -9,6 +9,8 @@ To get data in python, simply call the object with your API key and get ready fo
 4.	Stock technical indicators.
 5.	Sector performances. Provides real-time and historical sector performances calculated from S&P500 incumbents. 
 
+[Youtube Video](https://youtu.be/_8scf3l4Dtk)
+
 ## Things needed to run this program
 
 ### `Google App Engine`
